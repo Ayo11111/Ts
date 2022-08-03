@@ -14,11 +14,45 @@
     "include": [
         "./src/**/*" 
     ],
-    "exclude": [
-        "./src/hello/**/*"
-    ],
-    "extends": "./configs/base",
-    "files": [
-        "core.ts"
-    ]
+    // "exclude": [
+    //     "./src/hello/**/*"
+    // ],
+    // "extends": "./configs/base",
+    // "files": [
+    //     "core.ts"
+    // ]
+
+    /*
+        编译器的选项
+    */
+    "compilerOptions": {
+
+        // 用来指定ts被编译为的版本(可以传一个错误的值，来看可以传哪些值)
+        "target": "ES2015",
+
+        // 用来指定编译的模块化版本
+        "module": "ES2015",
+
+        // lib用来指定项目中需要使用的库（默认值是在浏览器环境运行的库，如果需要在node环境运行可自行配置）
+        // "lib": []
+        
+        // 指定编译后的js文件所在的目录
+        "outDir": "./dist",
+
+        // 将代码合并为一个文件
+        // 设置这个属性后，所有全局作用域中的代码会合并到同一个文件中
+        // "outFile": "./dist/app.js"
+
+        // 是否对js文件进行编译，默认是false
+        "allowJs": false,
+        // 是否检查js代码是否符合语法规范，默认值是false
+        "checkJs": false,
+
+        // 是否移除注释
+        "removeComments": true,
+        // 是否生成编译后文件
+        "noEmit": false,
+        // 当有错误时不生成编译后的文件(默认值是false)
+        "noEmitOnError": true
+    }
 }
