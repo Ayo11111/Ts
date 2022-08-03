@@ -1,5 +1,6 @@
-const { NONAME } = require('dns')
 const path = require('path')
+const HTMLWwebpackplugin = require('html-webpack-plugin')
+const { CleanWebpackPlugin } = require('clean-webpack-plugin')
 
 // webpack中所有的配置信息都应该写在module.exports中
 module.exports = {
@@ -27,5 +28,20 @@ module.exports = {
                 exclude: /node_modules/
             }
         ]
+    },
+
+
+    // 配置webpack插件
+    plugins:[
+        new CleanWebpackPlugin(),
+        new HTMLWwebpackplugin({
+            // title:'自定义title'
+            template:'./src/index.html'
+        })
+    ],
+
+    // 用来设置可以引用模块
+    resolve: {
+        extensions:['.ts','.js']
     }
 }
