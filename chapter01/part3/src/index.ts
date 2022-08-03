@@ -6,3 +6,6 @@ function sum(a: number, b: number): number {
 console.log('haha');
 console.log(hi);
 
+console.log(Promise);
+
+
