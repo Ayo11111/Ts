@@ -7,10 +7,18 @@
  */
 class Person {
     constructor() {
-        // 定义实例属性
+        /**
+         * 前面加上readonly变成只读的 (如果readonly和static一起用，前者要在后者的后面)
+         */
+        // 定义实例属性，需要通过对象的实例去访问
         this.name = '孙悟空';
     }
+    // 定义方法（和定义属性一样，前面加上static就是静态）
+    sayhi() {
+        console.log('hi');
+    }
 }
+//    readonly name: string = '孙悟空'
 // 定义类属性（静态属性）前面加上static关键字，静态属性只能通过类访问
 Person.age = 18;
 const per = new Person();
