@@ -17,8 +17,9 @@
             age:number
 
             constructor(name:string,age:number) {
+                 // 如果在子类中写了构造函数，在子类构造函数中必须对父类的构造函数进行调用
+                //  不然会出现父类属性无法完成初始化的问题
                 super(name) // 调用父类的构造函数
-                // 如果在子类中写了构造函数，在子类构造函数中必须对父类的构造函数进行调用
                 this.age = age
                
             }
@@ -30,7 +31,7 @@
             
         }
 
-        const dog = new Dog('汪汪狗')
+        const dog = new Dog('汪汪狗',14)
         dog.sayhi()
     }
 )()
