@@ -32,3 +32,5 @@ class Myclass<T> {
         this.name = name
     }
 }
+
+const i  = new Myclass<string>('孙悟空')
