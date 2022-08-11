@@ -15,10 +15,10 @@ class GameControl {
     // 创建一个值记录游戏是否结束
     isLive = true
     // 记录计时器的id
-    timeId: number
+    // timeId: number
 
     // 创建一个属性保存蛇的移动方向（按键的方向）
-    direction: string = ''
+    direction: string = 'Right'
 
     constructor() {
         this.snake = new Snake()
@@ -44,12 +44,14 @@ class GameControl {
     // ArrowRight Right  
     keydownHandle(event: KeyboardEvent) {
         // 需要检查event.key的值是否合法
-        const isLegal = ['ArrowUp', 'ArrowDown', 'ArrowLeft', 'ArrowRight', 'Up', 'Down', 'Left', 'Right'].includes(event.key)
+        // const isLegal = ['ArrowUp', 'ArrowDown', 'ArrowLeft', 'ArrowRight', 'Up', 'Down', 'Left', 'Right'].includes(event.key)
 
-        if (isLegal) {
-            // 因为这个函数是回调，所以this拿不到direction
-            this.direction = event.key
-        }
+        // if (isLegal) {
+        //     // 因为这个函数是回调，所以this拿不到direction
+        //     this.direction = event.key
+        // }
+        
+        this.direction = event.key
     }
 
     // 创建一个控制蛇移动的方法
@@ -90,11 +92,33 @@ class GameControl {
                 break;
         }
 
-        this.snake.X = X
-        this.snake.Y = Y
+        // 检查蛇是否吃到食物
+        this.checkEat(X, Y)
+
+        try {
+            this.snake.X = X
+            this.snake.Y = Y
+        } catch (error) {
+            // 进入到catch说明出现了异常，说明游戏结束，弹出一个提示信息
+            alert('游戏结束')
+            this.isLive = false
+        }
+
 
         // 开启一个定时调用
         this.isLive && setTimeout(this.run.bind(this), 300 - (this.scorePanel.level - 1) * 30)
+    }
+
+    // 定义一个方法，用来检查蛇是否吃到食物
+    checkEat(x: number, y: number) {
+        if (x === this.food.X && y === this.food.Y) {
+            // 食物的位置要进行重置
+            this.food.change()
+            // 分数增加
+            this.scorePanel.addScore()
+            // 蛇要增加一节
+            this.snake.addBody()
+        }
     }
 }
 
