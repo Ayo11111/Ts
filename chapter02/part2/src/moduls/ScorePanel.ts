@@ -1,5 +1,5 @@
 
-class scorePanel {
+class ScorePanel {
     // 用来记录分数和等级
     score = 0
     level = 1
@@ -38,4 +38,4 @@ class scorePanel {
     }
 }
 
-export default scorePanel;
+export default ScorePanel;
