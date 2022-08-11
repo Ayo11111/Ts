@@ -28,14 +28,14 @@ class Snake {
         if (this.X === value) {
             return
         }
-
+        
         // X的值的合法范围是0-290之间
-        if (value < 0 || value > 290) {
+        if (value <= 10 || value >= 280) {
             // 进入判断说明蛇撞墙了（抛出异常，程序就会终止运行）[用trycatch捕获后程序是会继续运行的]
             throw new Error('蛇撞墙了')
         }
 
-        this.head.style.left = value + ''
+        this.head.style.left = value + 'px'
     }
     set Y(value: number) {
 
@@ -43,12 +43,12 @@ class Snake {
             return
         }
 
-        if (value < 0 || value > 290) {
+        if (value <= 10 || value >= 280) {
             // 进入判断说明蛇撞墙了
             throw new Error('蛇撞墙了')
         }
 
-        this.head.style.top = value + ''
+        this.head.style.top = value + 'px'
     }
 
     // 蛇增加身体的方法
